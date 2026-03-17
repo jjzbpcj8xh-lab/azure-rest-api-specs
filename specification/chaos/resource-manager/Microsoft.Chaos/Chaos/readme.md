@@ -63,6 +63,10 @@ suppressions:
     from: openapi.json
     where: $.definitions.Target.properties.properties
     reason: Existing GA-exposed resource which relies on additionalProperties currently. Our RP will release a V2 in the future.
+  - code: AllTrackedResourcesMustHaveDelete
+    from: openapi.json
+    where: $.definitions.Workspace
+    reason: Workspace resource has a delete operation (Workspaces_Delete) at the standard resource path. This is a false positive.
 ```
 
 ### Tag: package-2025-01
