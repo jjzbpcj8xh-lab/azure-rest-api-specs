@@ -17,9 +17,9 @@ namespace Microsoft.Chaos;
 /**
  * Chaos Studio workspace async operation result resource operations.
  */
+#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "This is an LRO polling endpoint, not a resource collection"
 @added(Microsoft.Chaos.Versions.v2026_05_01_preview)
 @removed(Microsoft.Chaos.Versions.v2025_01_01)
-#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "This is an LRO polling endpoint, not a resource collection"
 interface WorkspaceOperationResults {
   /**
    * Returns the result of a workspace async operation.
@@ -39,16 +39,13 @@ interface WorkspaceOperationResults {
      */
     @path
     operationId: string,
-  ):
-    | ArmResponse<Workspace>
-    | (AcceptedResponse & {
-        @doc("The Location header contains the URL where the status of the long running operation can be checked.")
-        @header("Location")
-        location: string;
+  ): ArmResponse<Workspace> | (AcceptedResponse & {
+    @doc("The Location header contains the URL where the status of the long running operation can be checked.")
+    @header("Location")
+    location: string;
 
-        @doc("The Retry-After header can indicate how long the client should wait before polling the operation status.")
-        @header("Retry-After")
-        retryAfter?: int32;
-      })
-    | ErrorResponse;
+    @doc("The Retry-After header can indicate how long the client should wait before polling the operation status.")
+    @header("Retry-After")
+    retryAfter?: int32;
+  }) | ErrorResponse;
 }

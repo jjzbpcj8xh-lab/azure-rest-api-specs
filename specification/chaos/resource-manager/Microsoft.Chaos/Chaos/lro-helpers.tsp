@@ -29,7 +29,10 @@ namespace Microsoft.Chaos;
 @armResourceAction(Resource)
 @post
 @extension("x-ms-long-running-operation", true)
-@extension("x-ms-long-running-operation-options", #{ `final-state-via`: "location" })
+@extension(
+  "x-ms-long-running-operation-options",
+  #{ `final-state-via`: "location" }
+)
 op ArmResourceActionAsyncWithLocation<
   Resource extends Azure.ResourceManager.Foundations.Resource,
   Request extends TypeSpec.Reflection.Model | void,
@@ -38,14 +41,11 @@ op ArmResourceActionAsyncWithLocation<
 >(
   ...ResourceInstanceParameters<Resource, BaseParameters>,
   @bodyRoot body?: Request,
-):
-  | ArmResponse<Response>
-  | (ArmAcceptedLroResponse<
-      "Resource operation accepted.",
-      ArmLroLocationHeader<FinalResult = Response> &
-        Azure.Core.Foundations.RetryAfterHeader
-    >)
-  | ErrorResponse;
+): ArmResponse<Response> | ArmAcceptedLroResponse<
+  "Resource operation accepted.",
+  ArmLroLocationHeader<FinalResult = Response> &
+    Azure.Core.Foundations.RetryAfterHeader
+> | ErrorResponse;
 
 /**
  * A long-running resource action that returns 202 No Content on the initial POST,
@@ -69,7 +69,10 @@ op ArmResourceActionAsyncWithLocation<
 @armResourceAction(Resource)
 @post
 @extension("x-ms-long-running-operation", true)
-@extension("x-ms-long-running-operation-options", #{ `final-state-via`: "location" })
+@extension(
+  "x-ms-long-running-operation-options",
+  #{ `final-state-via`: "location" }
+)
 op ArmResourceActionNoContentAsyncWithLocationResult<
   Resource extends Azure.ResourceManager.Foundations.Resource,
   Request extends TypeSpec.Reflection.Model | void,
@@ -78,10 +81,8 @@ op ArmResourceActionNoContentAsyncWithLocationResult<
 >(
   ...ResourceInstanceParameters<Resource, BaseParameters>,
   @bodyRoot body?: Request,
-):
-  | (ArmAcceptedLroResponse<
-      "Resource operation accepted.",
-      ArmLroLocationHeader<FinalResult = FinalResult> &
-        Azure.Core.Foundations.RetryAfterHeader
-    >)
-  | ErrorResponse;
+): ArmAcceptedLroResponse<
+  "Resource operation accepted.",
+  ArmLroLocationHeader<FinalResult = FinalResult> &
+    Azure.Core.Foundations.RetryAfterHeader
+> | ErrorResponse;

@@ -72,7 +72,11 @@ interface Workspaces {
    * Refreshes recommendation status for all scenarios in a given workspace.
    */
   @pollingOperation(WorkspaceOperationResults.get)
-  refreshRecommendations is ArmResourceActionNoContentAsyncWithLocationResult<Workspace, void, Workspace>;
+  refreshRecommendations is ArmResourceActionNoContentAsyncWithLocationResult<
+    Workspace,
+    void,
+    Workspace
+  >;
 }
 
 @@minLength(Workspace.name, 1);

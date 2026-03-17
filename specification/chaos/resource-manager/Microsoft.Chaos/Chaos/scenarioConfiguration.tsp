@@ -92,20 +92,17 @@ interface ScenarioConfigurations {
   @get
   getLatestValidation(
     ...ResourceInstanceParameters<Validation>,
-  ):
-    | ArmResponse<Validation>
-    | (AcceptedResponse & {
-        @doc("The Location header contains the URL where the status of the long running operation can be checked.")
-        @header("Location")
-        location: string;
+  ): ArmResponse<Validation> | (AcceptedResponse & {
+    @doc("The Location header contains the URL where the status of the long running operation can be checked.")
+    @header("Location")
+    location: string;
 
-        @doc("The Retry-After header can indicate how long the client should wait before polling the operation status.")
-        @header("Retry-After")
-        retryAfter?: int32;
+    @doc("The Retry-After header can indicate how long the client should wait before polling the operation status.")
+    @header("Retry-After")
+    retryAfter?: int32;
 
-        @bodyRoot body: Validation;
-      })
-    | ErrorResponse;
+    @bodyRoot body: Validation;
+  }) | ErrorResponse;
 }
 
 @@minLength(ScenarioConfiguration.name, 1);
