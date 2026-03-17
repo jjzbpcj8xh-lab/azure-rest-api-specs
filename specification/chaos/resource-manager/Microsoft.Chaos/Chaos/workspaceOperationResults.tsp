@@ -17,7 +17,7 @@ namespace Microsoft.Chaos;
 /**
  * Chaos Studio workspace async operation result resource operations.
  */
-@added(Microsoft.Chaos.Versions.v2026_02_01_preview)
+@added(Microsoft.Chaos.Versions.v2026_05_01_preview)
 @removed(Microsoft.Chaos.Versions.v2025_01_01)
 #suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "This is an LRO polling endpoint, not a resource collection"
 interface WorkspaceOperationResults {

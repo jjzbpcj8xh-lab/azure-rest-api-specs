@@ -13,7 +13,7 @@ using TypeSpec.Rest;
 
 namespace Microsoft.Chaos;
 
-@added(Microsoft.Chaos.Versions.v2026_02_01_preview)
+@added(Microsoft.Chaos.Versions.v2026_05_01_preview)
 @removed(Microsoft.Chaos.Versions.v2025_01_01)
 @armResourceOperations
 interface Workspaces {

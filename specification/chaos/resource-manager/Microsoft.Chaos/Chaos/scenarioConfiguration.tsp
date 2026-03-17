@@ -19,7 +19,7 @@ using TypeSpec.OpenAPI;
 
 namespace Microsoft.Chaos;
 
-@added(Microsoft.Chaos.Versions.v2026_02_01_preview)
+@added(Microsoft.Chaos.Versions.v2026_05_01_preview)
 @removed(Microsoft.Chaos.Versions.v2025_01_01)
 @armResourceOperations
 interface ScenarioConfigurations {
@@ -61,7 +61,7 @@ interface ScenarioConfigurations {
    * Cancel the currently running scenario execution.
    */
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-post-operation-response-codes" "Async LRO operation returns 202 only"
-  @removed(Microsoft.Chaos.Versions.v2026_02_01_preview)
+  @removed(Microsoft.Chaos.Versions.v2026_05_01_preview)
   @pollingOperation(ScenarioRuns.get)
   cancel is ArmResourceActionNoContentAsyncWithLocationResult<
     ScenarioConfiguration,

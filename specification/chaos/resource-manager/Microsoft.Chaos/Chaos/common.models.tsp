@@ -64,7 +64,7 @@ union ProvisioningState {
    * Action is running.
    */
   @removed(Microsoft.Chaos.Versions.v2025_01_01)
-  @added(Microsoft.Chaos.Versions.v2026_02_01_preview)
+  @added(Microsoft.Chaos.Versions.v2026_05_01_preview)
   Running: "Running",
 }
 
