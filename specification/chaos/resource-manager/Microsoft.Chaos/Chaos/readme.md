@@ -67,6 +67,22 @@ suppressions:
     from: openapi.json
     where: $.definitions.Workspace
     reason: Workspace resource has a delete operation (Workspaces_Delete) at the standard resource path. This is a false positive.
+  - code: PostResponseCodes
+    from: openapi.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/workspaces/{workspaceName}/refreshRecommendations"].post
+    reason: RefreshRecommendations is a fire-and-forget LRO action that returns 202 and polls via location header. No final response body is needed.
+  - code: PostResponseCodes
+    from: openapi.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/workspaces/{workspaceName}/scenarios/{scenarioName}/configurations/{scenarioConfigurationName}/execute"].post
+    reason: Execute is a fire-and-forget LRO action that returns 202 and polls via location header. The final result is a ScenarioRun resource, not a direct POST response.
+  - code: PostResponseCodes
+    from: openapi.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/workspaces/{workspaceName}/scenarios/{scenarioName}/configurations/{scenarioConfigurationName}/validate"].post
+    reason: Validate is a fire-and-forget LRO action that returns 202 and polls via location header. The final result is retrieved via the polling URL.
+  - code: PostResponseCodes
+    from: openapi.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/workspaces/{workspaceName}/scenarios/{scenarioName}/runs/{runId}/cancel"].post
+    reason: Cancel is a fire-and-forget LRO action that returns 202 and polls via location header. No final response body is needed.
 ```
 
 ### Tag: package-2025-01
