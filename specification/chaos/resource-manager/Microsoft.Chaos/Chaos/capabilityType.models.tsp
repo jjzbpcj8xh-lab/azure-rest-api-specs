@@ -92,6 +92,7 @@ model CapabilityTypeProperties {
    */
   @visibility(Lifecycle.Read)
   @added(Microsoft.Chaos.Versions.v2025_01_01)
+  @added(Microsoft.Chaos.Versions.v2026_02_01_preview)
   requiredAzureRoleDefinitionIds?: string[];
 
   /**
