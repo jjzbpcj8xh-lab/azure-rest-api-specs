@@ -34,3 +34,27 @@
   rules:
     - XMSSecretInResponse
   reason: False positive - publicNetworkAccess is not a secret. It is a simple Enabled/Disabled configuration setting for public network access control. The property name contains 'access' which may trigger the rule, but the values are not sensitive.
+- tool: LintDiff
+  paths:
+    - preview/2026-05-01-preview/openapi.json
+  rules:
+    - PathForTrackedResourceTypes
+  reason: WorkspaceOperationResults is a location-based async operation result endpoint, not a tracked resource. It follows the standard ARM async operation pattern.
+- tool: LintDiff
+  paths:
+    - preview/2026-05-01-preview/openapi.json
+  rules:
+    - PostResponseCodes
+  reason: These long-running POST actions (RefreshRecommendations, Execute, Validate, Cancel) return 202 with location-based polling. The final result is retrieved via the polling URL, not as a direct 200 response on the POST endpoint.
+- tool: LintDiff
+  paths:
+    - preview/2026-05-01-preview/openapi.json
+  rules:
+    - AllTrackedResourcesMustHaveDelete
+  reason: Workspace resource has a delete operation defined. This is a false positive from the lint tool.
+- tool: LintDiff
+  paths:
+    - preview/2026-05-01-preview/openapi.json
+  rules:
+    - TrackedResourcePatchOperation
+  reason: Workspace resource has a patch operation (Workspaces_Update) that supports tag updates. This is a false positive from the lint tool.
